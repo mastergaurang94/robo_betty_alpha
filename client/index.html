@@ -1,34 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <title>Socket.IO chat</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      button button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+    </style>
+  </head>
+  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+  var socket = io();
+  function mehs(){
+    socket.emit('chat message', "Check in Bob Sagat");
+  }
 
-  <!-- WIREDEP WILL AUTOMATICALLY FILL IN THE FOLLOWING TWO SECTIONS
-  <!-- bower:css -->
-  <!-- endbower -->
-
-  <!-- bower:js -->
-  <!-- endbower -->
-
-  <!-- THIS WILL WHERE WE WILL FILL IN OUR SCRIPTS AND STYLE SHEETS-->
-  <link rel="stylesheet" href="css/style.css"/>
-  <script src="bundle.js"></script>
-
-</head>
-
-
-<body ng-app="robobetty">
-
-<nav-bar></nav-bar>
-
-<!-- MAIN CONTENT -->
-<div class="container">
-
-  <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT -->
-  <div ui-view></div>
-
-</div>
-
-</body>
+  socket.on('chat message', function(msg){
+    $('#messages').append($('<li>').text(msg));
+  });
+</script>
+  <body>
+    Patient Checkin Dashboard
+    <ul id="messages"></ul>
+    <button id = "meh' type="button" onclick="mehs()">Check in</button>
+  </body>
 </html>

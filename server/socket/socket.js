@@ -11,9 +11,20 @@ exports.createServer = function(app) {
     io = require('socket.io').listen(server)
 
     // /* Initialize the server */
-    server.listen(app.get('port'), function () {
+    server.listen(port, function () {
       console.log('Server listening at port %d', port);
     });
+
+    io.on('connection', function (socket) {
+    // Get the ID of the admin that has connected.
+        console.log("connected");
+        socket.on('chat message', function(msg){
+            console.log(msg);
+            io.emit('chat message', msg);
+        });
+    });
+
+
 
     return server;
 }
@@ -70,6 +81,7 @@ var nsp = io.of('/patientQueue');
  */
 io.on('connection', function (socket) {
     // Get the ID of the admin that has connected.
+    console.log('user connected');
     var adminID;
 
     socket.get('_admin_id', function (err, _admin_id) {
