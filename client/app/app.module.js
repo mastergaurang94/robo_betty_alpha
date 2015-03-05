@@ -16,8 +16,11 @@ angular.module('robobetty',
    'thankyouCheckIn'
   ])
 
+
+
+
 .config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/dashboard');
+  $urlRouterProvider.otherwise('/patientQueue');
   $stateProvider
   .state('common',{
     templateUrl: 'views/components/dashboard/views/dashboard.html',
@@ -45,6 +48,16 @@ angular.module('robobetty',
   .state('doctors', {
     url: '/doctors',
     templateUrl: 'views/components/dashboard/doctors/views/doctors.html',
+    parent: 'common'
+  })
+  .state('patientQueue', {
+    url: '/patientQueue',
+    templateUrl: 'views/components/dashboard/patientQueue/views/patients.html',
+    parent: 'common'
+  })
+  .state('employees', {
+    url: '/employees',
+    templateUrl: 'views/components/dashboard/employees/views/employees.html',
     parent: 'common'
   })
   .state('settings', {
