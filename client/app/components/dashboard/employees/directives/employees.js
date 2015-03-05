@@ -9,7 +9,7 @@ angular.module('dashboard')
       controllerAs: 'employeeCtrl'
     };
   })
-  .controller('EmployeeController', ['$scope', '$window', function ($scope, $window) {
+  .controller('EmployeeController', ['$scope', '$window', '$modal', function ($scope, $window, $modal) {
 // include root slecope
     $scope.rowCollection = [
         {
@@ -87,11 +87,29 @@ angular.module('dashboard')
         }
     };
 
-    //remove to the real data holder
-    $scope.removeItem = function(row) {
-        var index = $scope.rowCollection.indexOf(row);
-        if (index !== -1) {
-            $scope.rowCollection.splice(index, 1);
+
+    //remove to the real data holder modal
+    $scope.removeItem = function(row){
+      var modalInstance = $modal.open({
+        templateUrl: 'views/components/dashboard/patientQueue/views/patient-remove.html',
+        controller: 'DeleteEmployeeModalInstanceCtrl',
+        controllerAs: 'vm',
+        size: 'md',
+        backdrop: true,
+        resolve: {
+          item: function () {
+            $scope.selectedPatient = row;
+            return $scope.selectedPatient;
+          }
         }
+      }).result.then(function(data){
+
+          var index = $scope.displayedCollection.indexOf($scope.selectedPatient);
+
+          if (index !== -1) {
+            $scope.displayedCollection.splice(index, 1);
+            $scope.editMode = false;
+          }
+        }, function() {});
     };
 }]);
