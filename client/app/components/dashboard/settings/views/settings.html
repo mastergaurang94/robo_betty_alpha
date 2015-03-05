@@ -1,0 +1,21 @@
+<head>
+	<link href="http://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css" rel="stylesheet" />
+  <link type="text/css" rel="stylesheet" href="css/settings.css"/> 
+</head>
+
+<body ng-app="settings">
+	<div class="main" ng-controller="SettingsController">
+		<div class="options">
+			<h1>Change Password</h1>
+			<form ng-submit="update()">
+				<div class="formfield">
+					<b>Password: </b> <input type="password" placeholder="Enter Password" ng-model="user.password"></br>
+                <b>New Password: </b> <input type="password" placeholder="Enter new Password" ng-model="user.newpassword">                 </br>
+            <b>Confirm Password: </b> <input type="password" placeholder="Confirm New Password" ng-model="pass"> </br>
+            <p id="error_message">{{ errMessage }} </p></br>
+                <input type="submit" value="Submit"></a>
+				</div>
+			</form>
+		</div>
+	</div>  
+</body>
