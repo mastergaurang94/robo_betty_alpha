@@ -26,7 +26,11 @@
         <hr>
         <p ng-show="form.form_fields.length == 0">No fields added yet.</p>
         <accordion close-others="accordion.oneAtATime">
-            <accordion-group heading="{{field.field_title}}" ng-repeat="field in form.form_fields"> 
+            <accordion-group heading="{{field.field_title}}" ng-repeat="field in form.form_fields" is-open="status.open">
+                <accordion-heading>{{field.field_title}} 
+                    <i class="pull-right glyphicon" ng-class="{'glyphicon glyphicon-minus-sign': status.open, 'glyphicon glyphicon-plus-sign': !status.open}"></i>
+                </accordion-heading>
+            
 
                 <div class="accordion-edit">
                     <button class="btn btn-danger pull-right" type="button" ng-click="deleteField(field.field_id)"><i class="icon-trash icon-white"></i> Delete</button>
