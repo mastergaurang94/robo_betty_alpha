@@ -58,6 +58,12 @@ angular.module('robobetty',
         parent: 'common',
         title: 'Employees'
       })
+      .state('settings', {
+        url: '/settings',
+        templateUrl: 'views/components/dashboard/settings/views/settings.html',
+        parent: 'common',
+        title: 'Settings'
+      })
       .state('signin', {
         url: '/signin',
         templateUrl: 'views/components/receptionistPortal/signin/views/login.html'

@@ -4,20 +4,20 @@ angular.module('dashboard')
 	.controller('SettingsController', ['$scope','$rootScope','SettingsService',
 	  function($scope, $rootScope, SettingsService){
 
-		$scope.user = { password: '', newpassword: ''};
+		$scope.user = { email: '', password: '', newpassword: ''};
 		$scope.validateNewPass = '';
 		$scope.email = $rootScope.email;
 		$scope.err = false;
 		$scope.errMessage = '';
 
 		$scope.update = function(){
-			if($scope.user.password == ''){
-				$scope.errMessage = 'You must supply your current password.';
-			} else if ($scope.user.newpassword == ''){
-				$scope.errMessage = 'Please enter a new password.';
+			if($scope.user.password !== '' && $scope.user.newpassword == ''){
+				$scope.errMessage = 'Passwords do not match.';
+			} else if ($scope.user.password == '' && $scope.user.newpassword !== ''){
+				$scope.errMessage = 'Please confirm your new password.';
 			} else if($scope.validateNewPass != $scope.user.newpassword){
-				$scope.errMessage = "New password not validated correctly."
-			} else if($scope.user.newpassword.length < 4){
+				$scope.errMessage = "Passwords do not match."
+			} else if($scope.user.newpassword.length < 4 && $scope.user.newpassword !== ''){
 				$scope.errMessage = 'Password length must be of at least 4 characters.';
 			}else {
 				SettingsService.update($scope.user)
