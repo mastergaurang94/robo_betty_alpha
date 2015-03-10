@@ -3,38 +3,38 @@
 </head>
 
 <body>
-    <div class="main" ng-controller="SettingsController as regCtrl">
-        <div class="user">
+    <div class="main" id="container"ng-controller="SettingsController as regCtrl">
+        <!--<div class="user">
             {{email}}
-        </div>
-        <div id="container">
-            <h1>Settings</h1>
+        </div>-->
+        <!--<div id="container">-->
+        <div id="content">
             <form class="changepassform" ng-submit="update()">
-                <div class="formfield">
-                    <div class="formfield">
-                        <b>Change Name</b><input type="text" placeholder="Enter new Company Name" >
+                <!--<div class="formfield">-->
+                    <div id="left">
+                        <h2>Change Name</h2><input type="text" placeholder="CHANGE NAME" >
+                    
+                        <h2>Change Email</h2><input type="email" placeholder="CHANGE EMAIL" ng-model="user.email">
+                    
+                        <h2>Change Password</h2><input type="password" placeholder="CHANGE PASSWORD" ng-model="user.password">
+
+                        <h2>Confirm Password</h2><input type="password" placeholder="CONFIRM PASSWORD" ng-model="user.newpassword">
                     </div>
-                    <div class="formfield">
-                        <b>Change Email</b><input type="email" placeholder="Enter Email" ng-model="user.email">
+                    <div id="right">
+                        <h2>Change Name</h2><input type="text" placeholder="CHANGE NAME">
+                        <h2>Change Phone</h2><input type="text" placeholder="CHANGE PHONE">
+                        <div class="output">
+                        <input type="submit" value="Submit">
+                            <p id="error_message">{{ errMessage }} </p>
+                        </div>    
                     </div>
-                    <div class="formfield">
-                        <b>Change Password</b><input type="password" placeholder="Enter new Password" ng-model="user.password">
-                    </div>
-                    <div class="formfield">
-                        <b>Confirm Password</b><input type="password" placeholder="Enter new Password again" ng-model="validateNewPass">
-                    </div>
-                    <div class="formfield">
-                        <b>Change Company Name</b><input type="text" placeholder="Enter new Password">
-                    </div>
-                    <div class="formfield">
-                        <b>Change Company Phone</b><input type="text" placeholder="Enter new Password">
-                    </div>
-                    <div class="settingsError">
+                    <!--<div class="settingsError">
                         <div class="output">
                             <input type="submit" value="Submit">
                             <p id="error_message">{{ errMessage }} </p>
                         </div>
-                    </div>
+                    </div>-->
+                <!--</div>-->
             </form>
         </div>
     </div>  

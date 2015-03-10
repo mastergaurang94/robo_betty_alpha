@@ -15,7 +15,7 @@ angular.module('dashboard')
 				$scope.errMessage = 'Passwords do not match.';
 			} else if ($scope.user.password == '' && $scope.user.newpassword !== ''){
 				$scope.errMessage = 'Please confirm your new password.';
-			} else if($scope.validateNewPass != $scope.user.newpassword){
+			} else if($scope.user.password != $scope.user.newpassword){
 				$scope.errMessage = "Passwords do not match."
 			} else if($scope.user.newpassword.length < 4 && $scope.user.newpassword !== ''){
 				$scope.errMessage = 'Password length must be of at least 4 characters.';
