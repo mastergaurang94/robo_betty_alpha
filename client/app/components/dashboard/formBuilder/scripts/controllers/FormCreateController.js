@@ -151,7 +151,7 @@ angular.module('DashboardFormBuilderModule')
     if($scope.form.form_fields !== null && $scope.form.form_fields.length !== 0) {
         $scope.form.form_fields.splice(0, $scope.form.form_fields.length);
         $scope.addField.lastAddedID = 0;
-        $scope.previewMode = false;
+        $scope.previewMode = true;
         $scope.form.submitted = false;
     }
   };

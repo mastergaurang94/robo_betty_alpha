@@ -11,6 +11,7 @@ angular.module('DashboardFormBuilderModule')
               for(var i = 0; i < $scope.form.form_fields.length; i++)
               {
                 $scope.form.form_fields[i].field_readonly = false;
+                $scope.form.form_fields[i].field_id = i;
                 console.log($scope.form.form_fields);
               }
 
